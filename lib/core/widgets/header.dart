@@ -18,7 +18,7 @@ final class Header extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
         vertical: isDesktop ? 24 : 16,
-        horizontal: isDesktop ? 0 : 8,
+        horizontal: isDesktop ? 0 : 16,
       ),
       child: ResponsiveRowColumn(
         rowMainAxisAlignment: MainAxisAlignment.center,
@@ -43,24 +43,36 @@ final class Header extends StatelessWidget {
                       : CrossAxisAlignment.center,
               spacing: isDesktop ? 16 : 12,
               children: [
-                Text(
-                  localizations.name,
-                  style: (isDesktop
-                          ? context.textTheme.displaySmall
-                          : context.textTheme.headlineMedium)
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                  textAlign: isDesktop ? TextAlign.start : TextAlign.center,
+                Container(
+                  constraints: BoxConstraints(
+                    maxWidth: isDesktop ? double.infinity : 280,
+                  ),
+                  child: Text(
+                    localizations.name,
+                    style: (isDesktop
+                            ? context.textTheme.displaySmall
+                            : context.textTheme.titleLarge)
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                    textAlign: isDesktop ? TextAlign.start : TextAlign.center,
+                    softWrap: true,
+                  ),
                 ),
-                Text(
-                  localizations.about,
-                  style:
-                      isDesktop
-                          ? context.textTheme.titleLarge
-                          : context.textTheme.titleMedium,
-                  textAlign: isDesktop ? TextAlign.start : TextAlign.center,
+                Container(
+                  constraints: BoxConstraints(
+                    maxWidth: isDesktop ? double.infinity : 280,
+                  ),
+                  child: Text(
+                    localizations.about,
+                    style:
+                        isDesktop
+                            ? context.textTheme.titleLarge
+                            : context.textTheme.bodyLarge,
+                    textAlign: isDesktop ? TextAlign.start : TextAlign.center,
+                    softWrap: true,
+                  ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: isDesktop ? 0 : 4),
+                  padding: EdgeInsets.only(top: isDesktop ? 0 : 8),
                   child: const _SocialLinks._(),
                 ),
               ],
@@ -80,15 +92,17 @@ final class _SocialLinks extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDesktop = ResponsiveBreakpoints.of(context).largerThan(MOBILE);
 
-    return Row(
-      mainAxisAlignment:
-          isDesktop ? MainAxisAlignment.start : MainAxisAlignment.center,
-      children: List.generate(
-        growable: false,
-        SocialLinksList.links.length,
-        (index) => Padding(
-          padding: EdgeInsets.symmetric(horizontal: isDesktop ? 4 : 2),
-          child: IconButton(
+    return Container(
+      constraints: BoxConstraints(maxWidth: isDesktop ? double.infinity : 280),
+      child: Wrap(
+        alignment: isDesktop ? WrapAlignment.start : WrapAlignment.center,
+        spacing: isDesktop ? 8 : 4,
+        runSpacing: 8,
+        children: List.generate(
+          SocialLinksList.links.length,
+          (index) => IconButton(
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(),
             iconSize: isDesktop ? 24 : 20,
             icon: Icon(SocialLinksList.links[index].icon),
             onPressed:
