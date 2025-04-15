@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:yasin_ertekin_portfolio/core/constants/project_icons.dart';
 import 'package:yasin_ertekin_portfolio/core/extension/theme_extension.dart';
 import 'package:yasin_ertekin_portfolio/core/model/project.dart';
@@ -42,16 +43,31 @@ final class ProjectsSection extends StatelessWidget {
               ),
             ],
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: List.generate(
-              ProjectList.projects.length,
-              (index) => Expanded(
-                child: IntrinsicHeight(
-                  child: ProjectCard(project: ProjectList.projects[index]),
-                ),
-              ),
-            ).toList(growable: false),
+          Wrap(
+            spacing: 16,
+            runSpacing: 16,
+            children: ProjectList.projects
+                .map((project) {
+                  final cardWidth =
+                      ResponsiveValue<double>(
+                        context,
+                        conditionalValues: [
+                          const Condition.smallerThan(
+                            name: TABLET,
+                            value: double.infinity,
+                          ),
+                          const Condition.equals(name: TABLET, value: 400),
+                          const Condition.largerThan(name: TABLET, value: 450),
+                        ],
+                        defaultValue: 450,
+                      ).value;
+
+                  return SizedBox(
+                    width: cardWidth,
+                    child: ProjectCard(project: project),
+                  );
+                })
+                .toList(growable: false),
           ),
         ],
       ),

@@ -20,30 +20,26 @@ final class ProjectCard extends StatelessWidget {
       shape: const RoundedRectangleBorder(
         borderRadius: ProjectBorderRadius.allMedium,
       ),
-      child: Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 16),
-            _ProjectImage(project: project),
-            Expanded(
-              child: Padding(
-                padding: ProjectPadding.allMedium,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 16,
-                  children: <Widget>[
-                    _ProjectTitle(project: project),
-                    _ProjectDescription(project: project),
-                    _ProjectTechnologies(project: project),
-                    const Spacer(),
-                    _ProjectLinks(project: project),
-                  ],
-                ),
-              ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 16),
+          _ProjectImage(project: project),
+          Padding(
+            padding: ProjectPadding.allMedium,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 16,
+              children: <Widget>[
+                _ProjectTitle(project: project),
+                _ProjectDescription(project: project),
+                _ProjectTechnologies(project: project),
+                const SizedBox(height: 16),
+                _ProjectLinks(project: project),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
