@@ -1,0 +1,48 @@
+name: yasin_ertekin_portfolio
+description: "Personal portfolio website for Yasin Ertekin"
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # Web
+  universal_html: ^2.2.4
+
+  # Localization
+  intl: ^0.19.0
+
+  # UI components
+  url_launcher: ^6.3.1
+  responsive_framework: ^1.5.1
+  flutter_localization: ^0.3.2
+  font_awesome_flutter: ^10.8.0
+
+  # For handling assets
+  flutter_web_plugins:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.4.15
+  very_good_analysis: ^7.0.0
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+  # Generate localization files
+  generate: true
+
+flutter_intl:
+  enabled: true
+  class_name: AppLocalizations
+  main_locale: en
+  arb_dir: lib/l10n
+  output_dir: lib/generated

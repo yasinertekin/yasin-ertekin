@@ -1,0 +1,22 @@
+{
+  "appTitle": "Yasin Ertekin",
+  "name": "Yasin Ertekin",
+  "profession": "Flutter Developer & Mobile Engineer",
+  "about": "A mobile application developer specialized in Flutter, currently learning Swift.",
+  "aboutTitle": "About Me",
+  "aboutContent": "I'm a passionate mobile app developer with strong experience in building high-quality applications using Flutter. I'm currently expanding my skill set by learning Swift. I enjoy designing intuitive user interfaces and solving complex technical challenges.",
+  "projectsTitle": "Projects",
+  "contactTitle": "Contact",
+  "themeSwitch": "Switch Theme",
+  "languageSwitch": "Change Language",
+  "downloadCV": "Download CV",
+  "viewGitHub": "View on GitHub",
+  "viewAppStore": "View on App Store",
+  "viewPlayStore": "View on Play Store",
+  "footerRights": "All rights reserved.",
+  "builtWithFlutter": "Built with Flutter",
+  "samaticaTitle": "Samatica AI: Your Smart Assistant",
+  "samaticaDescription": "Samatica AI is a next-generation assistant app that empowers users to chat with advanced AI models like ChatGPT, Gemini, and Claude, analyze documents, generate visuals, and perform smart web searches. It also features AI personas such as psychologists and dietitians for personalized guidance. The app is built entirely with Flutter and Firebase, and uses RevenueCat for subscription management.",
+  "moonxTitle": "Moonx: Horoscope & Meditation",
+  "moonxDescription": "Moonx is a Flutter-based mobile app that delivers daily horoscopes, lunar guidance, weather forecasts, and calming meditation music. It features seamless API integrations, Bloc-based state management, and a refined user experience."
+}

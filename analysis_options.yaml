@@ -1,0 +1,6 @@
+include: package:very_good_analysis/analysis_options.yaml
+linter:
+  rules:
+    public_member_api_docs: false # /// yorum istemez
+    slash_for_doc_comments: false # /// yerine // kullanabilirsin
+    comment_references: false # [Foo] gibi referanslar zorunlu değil

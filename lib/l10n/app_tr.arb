@@ -1,0 +1,22 @@
+{
+  "appTitle": "Yasin Ertekin",
+  "name": "Yasin Ertekin",
+  "profession": "Flutter Geliştirici & Mobil Geliştirici",
+  "about": "Flutter'da uzmanlaşmış, Swift öğrenmeye devam eden bir mobil uygulama geliştiriciyim.",
+  "aboutTitle": "Hakkımda",
+  "aboutContent": "Flutter ile yüksek kaliteli mobil uygulamalar geliştirme konusunda güçlü bir deneyime sahibim. Şu anda Swift öğrenerek yeteneklerimi genişletiyorum. Kullanıcı dostu arayüzler tasarlamayı ve karmaşık teknik sorunlara yaratıcı çözümler üretmeyi seviyorum.",
+  "projectsTitle": "Projeler",
+  "contactTitle": "İletişim",
+  "themeSwitch": "Temayı Değiştir",
+  "languageSwitch": "Dili Değiştir",
+  "downloadCV": "CV'yi İndir",
+  "viewGitHub": "GitHub'da Gör",
+  "viewAppStore": "App Store'da Gör",
+  "viewPlayStore": "Play Store'da Gör",
+  "footerRights": "Tüm hakları saklıdır.",
+  "builtWithFlutter": "Flutter ile geliştirildi",
+  "samaticaTitle": "Samatica AI: Yapay Zeka Asistanı",
+  "samaticaDescription": "Samatica AI, kullanıcıların ChatGPT, Gemini ve Claude gibi güçlü yapay zeka modelleriyle sohbet edebildiği, belgeleri analiz edebildiği, görsel oluşturabildiği ve web üzerinde akıllı aramalar yapabildiği yeni nesil bir yapay zeka asistanıdır. Ayrıca psikolog ve diyetisyen gibi kişiselleştirilmiş yapay zeka asistanlarını da içerir. Uygulama Flutter ve Firebase teknolojileriyle geliştirilmiş, abonelik sistemi için RevenueCat ile entegre edilmiştir.",
+  "moonxTitle": "Moonx: Burçlar & Meditasyon",
+  "moonxDescription": "Moonx, kullanıcılara günlük burç yorumları, ay döngüsüne dayalı tavsiyeler, hava durumu tahminleri ve meditasyon müzikleri sunan Flutter tabanlı bir mobil uygulamadır. Gelişmiş kullanıcı deneyimi sunan uygulama; çoklu API entegrasyonu, Bloc tabanlı durum yönetimi ve şık bir tasarıma sahiptir."
+}
