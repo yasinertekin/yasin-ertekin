@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:yasin_ertekin_portfolio/core/constants/assets.dart';
 import 'package:yasin_ertekin_portfolio/core/extension/theme_extension.dart';
 import 'package:yasin_ertekin_portfolio/core/model/social_links.dart';
@@ -12,15 +13,28 @@ final class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
+    final isDesktop = ResponsiveBreakpoints.of(context).largerThan(MOBILE);
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      spacing: 48,
-      children: <Widget>[
-        const _ProfileImage._(),
-        Expanded(
+    return ResponsiveRowColumn(
+      rowMainAxisAlignment: MainAxisAlignment.center,
+      layout:
+          isDesktop
+              ? ResponsiveRowColumnType.ROW
+              : ResponsiveRowColumnType.COLUMN,
+      rowSpacing: 48,
+      columnSpacing: 24,
+      children: <ResponsiveRowColumnItem>[
+        ResponsiveRowColumnItem(
+          rowFlex: isDesktop ? 0 : null,
+          child: const _ProfileImage._(),
+        ),
+        ResponsiveRowColumnItem(
+          rowFlex: isDesktop ? 1 : null,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment:
+                isDesktop
+                    ? CrossAxisAlignment.start
+                    : CrossAxisAlignment.center,
             spacing: 16,
             children: [
               Text(
@@ -28,8 +42,13 @@ final class Header extends StatelessWidget {
                 style: context.textTheme.displaySmall?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
+                textAlign: isDesktop ? TextAlign.start : TextAlign.center,
               ),
-              Text(localizations.about, style: context.textTheme.titleLarge),
+              Text(
+                localizations.about,
+                style: context.textTheme.titleLarge,
+                textAlign: isDesktop ? TextAlign.start : TextAlign.center,
+              ),
               const _SocialLinks._(),
             ],
           ),
@@ -68,13 +87,16 @@ final class _ProfileImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDesktop = ResponsiveBreakpoints.of(context).largerThan(MOBILE);
+    final size = isDesktop ? 200.0 : 150.0;
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(100),
       child: Image.asset(
         Assets.imgProfile.toPng,
         fit: BoxFit.cover,
-        width: 200,
-        height: 200,
+        width: size,
+        height: size,
       ),
     );
   }
