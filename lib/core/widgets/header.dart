@@ -15,45 +15,59 @@ final class Header extends StatelessWidget {
     final localizations = AppLocalizations.of(context)!;
     final isDesktop = ResponsiveBreakpoints.of(context).largerThan(MOBILE);
 
-    return ResponsiveRowColumn(
-      rowMainAxisAlignment: MainAxisAlignment.center,
-      layout:
-          isDesktop
-              ? ResponsiveRowColumnType.ROW
-              : ResponsiveRowColumnType.COLUMN,
-      rowSpacing: 48,
-      columnSpacing: 24,
-      children: <ResponsiveRowColumnItem>[
-        ResponsiveRowColumnItem(
-          rowFlex: isDesktop ? 0 : null,
-          child: const _ProfileImage._(),
-        ),
-        ResponsiveRowColumnItem(
-          rowFlex: isDesktop ? 1 : null,
-          child: Column(
-            crossAxisAlignment:
-                isDesktop
-                    ? CrossAxisAlignment.start
-                    : CrossAxisAlignment.center,
-            spacing: 16,
-            children: [
-              Text(
-                localizations.name,
-                style: context.textTheme.displaySmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: isDesktop ? TextAlign.start : TextAlign.center,
-              ),
-              Text(
-                localizations.about,
-                style: context.textTheme.titleLarge,
-                textAlign: isDesktop ? TextAlign.start : TextAlign.center,
-              ),
-              const _SocialLinks._(),
-            ],
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: isDesktop ? 24 : 16,
+        horizontal: isDesktop ? 0 : 8,
+      ),
+      child: ResponsiveRowColumn(
+        rowMainAxisAlignment: MainAxisAlignment.center,
+        columnMainAxisAlignment: MainAxisAlignment.center,
+        layout:
+            isDesktop
+                ? ResponsiveRowColumnType.ROW
+                : ResponsiveRowColumnType.COLUMN,
+        rowSpacing: 48,
+        columnSpacing: 20,
+        children: <ResponsiveRowColumnItem>[
+          ResponsiveRowColumnItem(
+            rowFlex: isDesktop ? 0 : null,
+            child: const _ProfileImage._(),
           ),
-        ),
-      ],
+          ResponsiveRowColumnItem(
+            rowFlex: isDesktop ? 1 : null,
+            child: Column(
+              crossAxisAlignment:
+                  isDesktop
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.center,
+              spacing: isDesktop ? 16 : 12,
+              children: [
+                Text(
+                  localizations.name,
+                  style: (isDesktop
+                          ? context.textTheme.displaySmall
+                          : context.textTheme.headlineMedium)
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                  textAlign: isDesktop ? TextAlign.start : TextAlign.center,
+                ),
+                Text(
+                  localizations.about,
+                  style:
+                      isDesktop
+                          ? context.textTheme.titleLarge
+                          : context.textTheme.titleMedium,
+                  textAlign: isDesktop ? TextAlign.start : TextAlign.center,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: isDesktop ? 0 : 4),
+                  child: const _SocialLinks._(),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -64,17 +78,25 @@ final class _SocialLinks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDesktop = ResponsiveBreakpoints.of(context).largerThan(MOBILE);
+
     return Row(
+      mainAxisAlignment:
+          isDesktop ? MainAxisAlignment.start : MainAxisAlignment.center,
       children: List.generate(
         growable: false,
         SocialLinksList.links.length,
-        (index) => IconButton(
-          icon: Icon(SocialLinksList.links[index].icon),
-          onPressed:
-              () => LaunchUrlHelper.launchUrls(
-                SocialLinksList.links[index].url.value,
-              ),
-          tooltip: SocialLinksList.links[index].tooltip,
+        (index) => Padding(
+          padding: EdgeInsets.symmetric(horizontal: isDesktop ? 4 : 2),
+          child: IconButton(
+            iconSize: isDesktop ? 24 : 20,
+            icon: Icon(SocialLinksList.links[index].icon),
+            onPressed:
+                () => LaunchUrlHelper.launchUrls(
+                  SocialLinksList.links[index].url.value,
+                ),
+            tooltip: SocialLinksList.links[index].tooltip,
+          ),
         ),
       ),
     );
@@ -88,10 +110,10 @@ final class _ProfileImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDesktop = ResponsiveBreakpoints.of(context).largerThan(MOBILE);
-    final size = isDesktop ? 200.0 : 150.0;
+    final size = isDesktop ? 200.0 : 120.0;
 
     return ClipRRect(
-      borderRadius: BorderRadius.circular(100),
+      borderRadius: BorderRadius.circular(size / 2),
       child: Image.asset(
         Assets.imgProfile.toPng,
         fit: BoxFit.cover,
