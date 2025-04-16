@@ -43,11 +43,11 @@ final class SocialLinksList {
           icon: ProjectIcons.email,
           tooltip: StringConstants.emailTooltip,
         ),
-        const SocialLink(
-          url: SocialUrl.downloadCV,
-          icon: ProjectIcons.download,
-          tooltip: StringConstants.downloadCVTooltip,
-        ),
+        // const SocialLink(
+        //   url: SocialUrl.downloadCV,
+        //   icon: ProjectIcons.download,
+        //   tooltip: StringConstants.downloadCVTooltip,
+        // ),
       ]);
 
   static UnmodifiableListView<SocialLink> get links => _links;
