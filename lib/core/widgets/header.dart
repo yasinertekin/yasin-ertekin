@@ -81,22 +81,20 @@ final class _SocialLinks extends StatelessWidget {
     final isDesktop = ResponsiveBreakpoints.of(context).largerThan(MOBILE);
 
     return Row(
+      spacing: 8,
       mainAxisAlignment:
           isDesktop ? MainAxisAlignment.start : MainAxisAlignment.center,
       children: List.generate(
         growable: false,
         SocialLinksList.links.length,
-        (index) => Padding(
-          padding: EdgeInsets.symmetric(horizontal: isDesktop ? 4 : 2),
-          child: IconButton(
-            iconSize: isDesktop ? 24 : 20,
-            icon: Icon(SocialLinksList.links[index].icon),
-            onPressed:
-                () => LaunchUrlHelper.launchUrls(
-                  SocialLinksList.links[index].url.value,
-                ),
-            tooltip: SocialLinksList.links[index].tooltip,
-          ),
+        (index) => IconButton(
+          iconSize: isDesktop ? 24 : 20,
+          icon: Icon(SocialLinksList.links[index].icon),
+          onPressed:
+              () => LaunchUrlHelper.launchUrls(
+                SocialLinksList.links[index].url.value,
+              ),
+          tooltip: SocialLinksList.links[index].tooltip,
         ),
       ),
     );
